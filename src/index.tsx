@@ -10,8 +10,13 @@ import { renderCours, renderLecon } from './routes/cours'
 import { renderExercices, renderQCM } from './routes/exercices'
 import { renderSujets } from './routes/sujets'
 import { renderUpload } from './routes/upload'
+import adminRoutes from './admin/routes/index'
 
 const app = new Hono()
+
+// ===== MODULE ADMINISTRATION =====
+// Toutes les routes /admin/* sont déléguées au router admin
+app.route('/admin', adminRoutes)
 
 // Servir les fichiers statiques
 app.use('/static/*', serveStatic({ root: './public' }))
